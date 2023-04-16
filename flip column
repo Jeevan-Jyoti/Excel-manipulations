@@ -1,0 +1,16 @@
+import pandas as pd
+
+# Read the Excel sheet into a pandas DataFrame
+df = pd.read_excel("flipo.xlsx", engine="openpyxl")
+
+# Get the values of the column you want to flip
+col_to_flip = df.iloc[:, 9].values
+
+# Flip the values of the column
+flipped_col = col_to_flip[::-1]
+
+# Replace the column in the DataFrame with the flipped column
+df.iloc[:, 9] = flipped_col
+
+# Save the modified DataFrame back to an Excel sheet
+df.to_excel("flipo.xlsx", index=False)
